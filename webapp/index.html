@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Гадание на Таро</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="client.js" defer></script>
+</head>
+<body>
+  <!-- Лоадер -->
+  <div id="loader" class="loader hidden">
+    <img src="images/loader-tarot.gif" alt="Загрузка..." />
+  </div>
+
+  <!-- Заголовок -->
+  <h1>Онлайн гадание</h1>
+
+  <!-- Карта дня -->
+  <section>
+    <label for="query-input-card-day">Ваш запрос для карты дня (до 50 символов):</label>
+    <input type="text" id="query-input-card-day" maxlength="50" />
+    <button id="card-of-day-btn">Карта дня</button>
+  </section>
+
+  <!-- Расклад -->
+  <section>
+    <label for="deck-select">Выбери колоду:</label>
+    <select id="deck-select"></select>
+
+    <label for="spread-select">Выбери расклад:</label>
+    <select id="spread-select">
+      <option value="tenCardLayout">Расклад на 10 карт</option>
+    </select>
+
+    <label for="query-input-spread">Ваш запрос для расклада (до 50 символов):</label>
+    <input type="text" id="query-input-spread" maxlength="50" />
+    <button id="draw-btn">Сделать расклад</button>
+  </section>
+
+  <!-- Результаты -->
+  <section id="results">
+    <div id="spread-result"></div>
+    <div id="cards-container">
+      <div id="cards"></div>
+    </div>
+  </section>
+
+  <!-- Смена темы -->
+  <button id="toggle-theme-btn">Сменить тему</button>
+
+  <!-- Тарифы -->
+  <hr />
+  <h2>Выберите тариф</h2>
+  <div id="tariff-list"></div>
+</body>
+</html>

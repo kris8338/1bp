@@ -1,0 +1,190 @@
+/* === Базовые стили === */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #fff;
+  color: #111;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+label, select, button, input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 10px auto;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input, select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* === Кнопки === */
+button {
+  padding: 10px 20px;
+  margin: 5px auto;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  width: 100%;
+}
+
+body.light-theme button {
+  background: linear-gradient(to right, #ffe680, #ffc107);
+  color: #222;
+}
+
+body.dark-theme button {
+  background: linear-gradient(to right, #444, #666);
+  color: #f0f0f0;
+}
+
+button:hover {
+  opacity: 0.95;
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* === Темы === */
+body.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.dark-theme input,
+.dark-theme select,
+.dark-theme button {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+/* === Карты Таро === */
+#cards-container {
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+  background-color: #f2f2f2;
+}
+
+#cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  width: 60px;
+  height: 100px;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  backface-visibility: hidden;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card .front {
+  position: absolute;
+  transform: rotateY(180deg);
+}
+
+.card .back {
+  position: absolute;
+  transform: rotateY(0deg);
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* === Loader (загрузка) === */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loader img {
+  width: 120px;
+  animation: float 2s infinite ease-in-out;
+}
+
+.loader.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* === Блокировка доступа === */
+body.access-denied #deck-select,
+body.access-denied #spread-select,
+body.access-denied #query-input-spread,
+body.access-denied #draw-btn,
+body.access-denied #cards,
+body.access-denied #reveal-btn,
+body.access-denied #card-of-day-btn {
+  display: none;
+}
+
+/* === Адаптивность === */
+@media (max-width: 600px) {
+  body {
+    margin: 10px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .card {
+    width: 50px;
+    height: 80px;
+  }
+}

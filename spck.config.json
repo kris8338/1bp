@@ -1,0 +1,17 @@
+{
+  "run": {
+    "type": "file",
+    "task": "npm/install",
+    "tasks": {
+      "if": [
+        [
+          "!exists",
+          "node_modules"
+        ]
+      ],
+      "then": "npm/install-dep"
+    },
+    "file": "dist/index.html",
+    "ignoreCurrent": true
+  }
+}
