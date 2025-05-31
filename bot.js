@@ -2,10 +2,16 @@ require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const spreads = require('./tarot/spreads');
 const decks = require('./tarot/decks');
+const mongoose = require('mongoose');
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 const webAppUrl = process.env.WEBAPP_URL;
 const ADMIN_ID = process.env.ADMIN_ID;
+
+// Подключение к MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 // Временная база пользователей
 const userData = {};
@@ -26,6 +32,18 @@ bot.onText(/\/start/, (msg) => {
 
   const startData = JSON.stringify({ isAdmin: isAdmin(userId) });
 
+  bot.sendMessage(chatId, 'Добро пожаловать! Получи свою бесплатную Карту дня и сделай до 5 раскладов бесплатно.', {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: 'Открыть мини-приложение',
+            web_app: { url: `${webAppUrl}?data=${encodeURIComponent(startData)}` }
+          }
+        ]
+      ]
+    }
+  });
 });
 
 // Команда /admin
@@ -39,16 +57,3 @@ bot.onText(/\/admin/, (msg) => {
     bot.sendMessage(chatId, 'У вас нет доступа к этой команде.');
   }
 });
-
-bot.sendMessage(chatId, 'Добро пожаловать! Получи свою бесплатную Карту дня и сделай до 5 раскладов бесплатно.', {
-  reply_markup: {
-    inline_keyboard: [
-      [{ text: 'Открыть мини-приложение', web_app: { url: `${webAppUrl}?data=${encodeURIComponent(startData)}` } }]
-    ]
-  }
-});
-
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
