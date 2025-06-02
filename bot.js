@@ -74,3 +74,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Express-сервер запущен на порту ${PORT}`);
 });
+
+console.log("Бот запущен");
