@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "node-telegram-bot-api": "^0.61.0",
@@ -22,3 +23,4 @@
     "webpack-cli": "^5.1.4"
   }
 }
+
