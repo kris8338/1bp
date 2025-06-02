@@ -1,33 +1,4 @@
 {
-  "serve": "npx serve dist", 
-  "name": "react-project",
-  "version": "1.0.0",
-  "description": "This is a React project template using webpack for Spck for NodeJS. This project template was made with the help of `createapp.dev`.",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "scripts": {
-    "clean": "rm dist/bundle.js",
-    "install-dep": "npm i --no-bin-links",
-    "build": "webpack",
-    "build-prod": "webpack --mode production",
-    "start": "webpack serve --hot --mode development"
-  },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "webpack": "5.88.2",
-    "webpack-cli": "5.1.4",
-    "@babel/preset-react": "7.22.15",
-    "babel-loader": "9.1.3",
-    "@babel/core": "7.22.20",
-    "@babel/preset-env": "7.22.20"
-  }
-}
-{
   "name": "tarobot",
   "version": "1.0.0",
   "main": "bot.js",
