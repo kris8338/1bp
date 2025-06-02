@@ -57,3 +57,20 @@ bot.onText(/\/admin/, (msg) => {
     bot.sendMessage(chatId, 'У вас нет доступа к этой команде.');
   }
 });
+
+bot.on('message', (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(chatId, 'Бот работает! Напиши /start, чтобы начать.');
+});
+
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('Бот работает. Добро пожаловать!');
+});
+
+app.listen(PORT, () => {
+  console.log(`Express-сервер запущен на порту ${PORT}`);
+});
