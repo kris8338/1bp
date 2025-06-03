@@ -8,10 +8,14 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 const webAppUrl = process.env.WEBAPP_URL;
 const ADMIN_ID = process.env.ADMIN_ID;
 
-// Подключение к MongoDB
+bot.on("polling_error", (err) => console.log("Polling error:", err));
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1); // остановка, если нет подключения
+  });
 
 // Временная база пользователей
 const userData = {};
