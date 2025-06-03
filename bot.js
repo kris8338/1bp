@@ -1,4 +1,9 @@
 require('dotenv').config();
+console.log("=== BOT STARTING ===");
+console.log("BOT_TOKEN:", process.env.BOT_TOKEN ? "OK" : "MISSING");
+console.log("WEBAPP_URL:", process.env.WEBAPP_URL || "missing");
+console.log("MONGO_URI:", process.env.MONGO_URI ? "OK" : "MISSING");
+
 const TelegramBot = require('node-telegram-bot-api');
 const spreads = require('./tarot/spreads');
 const decks = require('./tarot/decks');
@@ -8,7 +13,9 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 const webAppUrl = process.env.WEBAPP_URL;
 const ADMIN_ID = process.env.ADMIN_ID;
 
-bot.on("polling_error", (err) => console.log("Polling error:", err));
+bot.on("polling_error", (err) => {
+  console.log("Telegram polling error:", err.message);
+});
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
