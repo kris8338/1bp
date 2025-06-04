@@ -60,20 +60,24 @@
   <h2>Выберите тариф</h2>
   <div id="tariff-list"></div>
 
-  <!-- Модульный скрипт для отрисовки расклада -->
+  <!-- Скрипт с отрисовкой раскладов -->
   <script type="module">
-    import { renderSpreadLayout } from '/render.js';
-    import { spreads } from '/spreads.js';
+    import { renderSpreadLayout } from './render.js';
+    import { spreads } from './spreads.js';
 
     document.addEventListener("DOMContentLoaded", () => {
       const deckSelect = document.getElementById("deck-select");
       const spreadSelect = document.getElementById("spread-select");
       const drawButton = document.getElementById("draw-btn");
 
+      // Первичная отрисовка
+      renderSpreadLayout(spreads.kelticCross, deckSelect.value);
+
       drawButton.addEventListener("click", () => {
         const selectedDeck = deckSelect.value;
         const selectedSpreadKey = spreadSelect.value;
         const selectedSpread = spreads[selectedSpreadKey];
+
         if (selectedSpread) {
           renderSpreadLayout(selectedSpread, selectedDeck);
         } else {
@@ -82,14 +86,6 @@
       });
     });
   </script>
-  <script type="module">
-  import { renderSpreadLayout } from './render.js';
-  import { spreads } from './spreads.js';
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const selectedDeck = "light-seers"; // или другой
-    renderSpreadLayout(spreads.kelticCross, selectedDeck);
-  });
-</script>
 </body>
 </html>
+
