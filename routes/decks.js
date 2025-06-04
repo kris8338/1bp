@@ -3,7 +3,7 @@ const path = require("path");
 const express = require("express");
 const router = express.Router();
 
-const basePath = path.join(__dirname, "../public/attached_assets");
+const basePath = path.join(__dirname, "../public/images");
 
 router.get("/:deckName", (req, res) => {
   const deckName = req.params.deckName;
