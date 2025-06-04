@@ -5,8 +5,8 @@ console.log("WEBAPP_URL:", process.env.WEBAPP_URL || "missing");
 console.log("MONGO_URI:", process.env.MONGO_URI ? "OK" : "MISSING");
 
 const TelegramBot = require('node-telegram-bot-api');
-const spreads = require('./tarot/spreads');
-const decks = require('./tarot/decks');
+const spreads = require('./webapp/spreads');
+const decks = require('./routes/decks');
 const mongoose = require('mongoose');
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
