@@ -27,11 +27,16 @@
   <!-- Расклад -->
   <section>
     <label for="deck-select">Выбери колоду:</label>
-    <select id="deck-select"></select>
+    <select id="deck-select">
+      <option value="light-seers">Light Seers</option>
+      <option value="everyday-witch">Everyday Witch</option>
+      <option value="witch-taro">Witch Taro</option>
+      <option value="rider-waite">Rider Waite</option>
+    </select>
 
     <label for="spread-select">Выбери расклад:</label>
     <select id="spread-select">
-      <option value="tenCardLayout">Расклад на 10 карт</option>
+      <option value="kelticCross">Кельтский крест</option>
     </select>
 
     <label for="query-input-spread">Ваш запрос для расклада (до 50 символов):</label>
@@ -54,5 +59,28 @@
   <hr />
   <h2>Выберите тариф</h2>
   <div id="tariff-list"></div>
+
+  <!-- Модульный скрипт для отрисовки расклада -->
+  <script type="module">
+    import { renderSpreadLayout } from '/render.js';
+    import { spreads } from '/spreads.js';
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const deckSelect = document.getElementById("deck-select");
+      const spreadSelect = document.getElementById("spread-select");
+      const drawButton = document.getElementById("draw-btn");
+
+      drawButton.addEventListener("click", () => {
+        const selectedDeck = deckSelect.value;
+        const selectedSpreadKey = spreadSelect.value;
+        const selectedSpread = spreads[selectedSpreadKey];
+        if (selectedSpread) {
+          renderSpreadLayout(selectedSpread, selectedDeck);
+        } else {
+          console.warn("Неизвестный расклад:", selectedSpreadKey);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
