@@ -10,7 +10,7 @@
 </head>
 <body>
   <!-- Лоадер -->
-  <div id="loader" class="loader hidden">
+  <div id="loader" class="loader">
     <img src="images/loader-tarot.gif" alt="Загрузка..." />
   </div>
 
@@ -60,7 +60,7 @@
   <h2>Выберите тариф</h2>
   <div id="tariff-list"></div>
 
-  <!-- Скрипт с отрисовкой раскладов -->
+  <!-- Рендер расклада -->
   <script type="module">
     import { renderSpreadLayout } from './render.js';
     import { spreads } from './spreads.js';
@@ -70,22 +70,16 @@
       const spreadSelect = document.getElementById("spread-select");
       const drawButton = document.getElementById("draw-btn");
 
-      // Первичная отрисовка
       renderSpreadLayout(spreads.kelticCross, deckSelect.value);
 
       drawButton.addEventListener("click", () => {
         const selectedDeck = deckSelect.value;
-        const selectedSpreadKey = spreadSelect.value;
-        const selectedSpread = spreads[selectedSpreadKey];
-
+        const selectedSpread = spreads[spreadSelect.value];
         if (selectedSpread) {
           renderSpreadLayout(selectedSpread, selectedDeck);
-        } else {
-          console.warn("Неизвестный расклад:", selectedSpreadKey);
         }
       });
     });
   </script>
 </body>
 </html>
-
