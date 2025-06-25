@@ -1,16 +1,24 @@
 function checkAccess(telegram_id) {
   showLoader();
   fetch("https://yourserver.com/api/access/check", {
-    ...
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ telegram_id })
   })
-  .then(res => res.json())
-  .then(data => {
-    ...
-    hideLoader();
-  });
+    .then(res => res.json())
+    .then(data => {
+      console.log("Access check result:", data);
+      hideLoader();
+    })
+    .catch(err => {
+      console.error("Access check error:", err);
+      hideLoader();
+    });
 }
 
-function checkTelegramAuth(initData, botToken) {
+async function checkTelegramAuth(initData, botToken) {
   const urlParams = new URLSearchParams(initData);
   const hash = urlParams.get("hash");
   urlParams.delete("hash");
@@ -20,15 +28,21 @@ function checkTelegramAuth(initData, botToken) {
     .sort()
     .join("\n");
 
-  const secretKey = crypto
-    .createHmac("sha256", botToken)
-    .update("WebAppData")
-    .digest();
+  const encoder = new TextEncoder();
+  const secretKeyData = encoder.encode(botToken);
+  const key = await crypto.subtle.importKey(
+    "raw", secretKeyData, { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
+  );
 
-  const computedHash = crypto
-    .createHmac("sha256", secretKey)
-    .update(dataCheckString)
-    .digest("hex");
+  const signature = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    encoder.encode(dataCheckString)
+  );
+
+  const computedHash = Array.from(new Uint8Array(signature))
+    .map(b => b.toString(16).padStart(2, "0"))
+    .join("");
 
   return computedHash === hash;
 }
@@ -157,7 +171,7 @@ function drawSpread() {
   cardsContainer.innerHTML = "";
   cardsContainer.style.position = "relative";
 
-  selectedSpread.positions.forEach((pos, i) => {
+  selectedSpread.layout.forEach((pos, i) => {
     const cardData = shuffledDeck[i];
 
     const card = document.createElement("div");
@@ -212,9 +226,21 @@ function drawCardOfDay() {
   `;
 }
 
+// Заглушки для Loader
+function showLoader() {
+  const loader = document.getElementById('loader');
+  if (loader) loader.style.display = 'block';
+}
+
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  if (loader) loader.style.display = 'none';
+}
+
 // Кнопки
 document.getElementById('card-of-day-btn').addEventListener('click', drawCardOfDay);
 document.getElementById('draw-btn').addEventListener('click', drawSpread);
 
 // Запуск при загрузке
 document.addEventListener('DOMContentLoaded', populateSelects);
+
