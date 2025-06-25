@@ -15,16 +15,16 @@ const spreads = {
       '10 - итоговый результат',
     ],
     layout: [
-      { id: "card1", x: 20, y: 40 },
-      { id: "card2", x: 92, y: 40 },
-      { id: "card3", x: 164, y: 40 },
-      { id: "card4", x: 236, y: 40 },
-      { id: "card5", x: 308, y: 40 },
-      { id: "card6", x: 20, y: 160 },
-      { id: "card7", x: 92, y: 160 },
-      { id: "card8", x: 164, y: 160 },
-      { id: "card9", x: 236, y: 160 },
-      { id: "card10", x: 308, y: 160 },
+      { id: "card1", left: "5%", top: "5%" },
+      { id: "card2", left: "15%", top: "5%" },
+      { id: "card3", left: "25%", top: "5%" },
+      { id: "card4", left: "35%", top: "5%" },
+      { id: "card5", left: "45%", top: "5%" },
+      { id: "card6", left: "5%", top: "35%" },
+      { id: "card7", left: "15%", top: "35%" },
+      { id: "card8", left: "25%", top: "35%" },
+      { id: "card9", left: "35%", top: "35%" },
+      { id: "card10", left: "45%", top: "35%" }
     ]
   },
 
@@ -41,13 +41,13 @@ const spreads = {
       '7 - чем всё закончится',
     ],
     layout: [
-      { id: "card1", x: 20, y: 40 },
-      { id: "card2", x: 92, y: 40 },
-      { id: "card3", x: 164, y: 40 },
-      { id: "card4", x: 236, y: 40 },
-      { id: "card5", x: 308, y: 40 },
-      { id: "card6", x: 20, y: 160 },
-      { id: "card7", x: 92, y: 160 },
+      { id: "card1", left: "5%", top: "5%" },
+      { id: "card2", left: "20%", top: "5%" },
+      { id: "card3", left: "35%", top: "5%" },
+      { id: "card4", left: "50%", top: "5%" },
+      { id: "card5", left: "65%", top: "5%" },
+      { id: "card6", left: "20%", top: "35%" },
+      { id: "card7", left: "35%", top: "35%" }
     ]
   },
 
@@ -65,14 +65,14 @@ const spreads = {
       '8 - позитивный итог периода',
     ],
     layout: [
-      { id: "card1", x: 20, y: 40 },
-      { id: "card2", x: 92, y: 40 },
-      { id: "card3", x: 164, y: 40 },
-      { id: "card4", x: 236, y: 40 },
-      { id: "card5", x: 308, y: 40 },
-      { id: "card6", x: 20, y: 160 },
-      { id: "card7", x: 92, y: 160 },
-      { id: "card8", x: 164, y: 160 },
+      { id: "card1", left: "5%", top: "5%" },
+      { id: "card2", left: "20%", top: "5%" },
+      { id: "card3", left: "35%", top: "5%" },
+      { id: "card4", left: "50%", top: "5%" },
+      { id: "card5", left: "65%", top: "5%" },
+      { id: "card6", left: "20%", top: "35%" },
+      { id: "card7", left: "35%", top: "35%" },
+      { id: "card8", left: "50%", top: "35%" }
     ]
   },
 
@@ -88,12 +88,12 @@ const spreads = {
       '6 - с чем выходим в новый месяц',
     ],
     layout: [
-      { id: "card1", x: 20, y: 40 },
-      { id: "card2", x: 92, y: 40 },
-      { id: "card3", x: 164, y: 40 },
-      { id: "card4", x: 236, y: 40 },
-      { id: "card5", x: 308, y: 40 },
-      { id: "card6", x: 20, y: 160 },
+      { id: "card1", left: "5%", top: "5%" },
+      { id: "card2", left: "20%", top: "5%" },
+      { id: "card3", left: "35%", top: "5%" },
+      { id: "card4", left: "50%", top: "5%" },
+      { id: "card5", left: "65%", top: "5%" },
+      { id: "card6", left: "20%", top: "35%" }
     ]
   },
 
@@ -113,16 +113,16 @@ const spreads = {
       '10 - совет для укрепления отношений',
     ],
     layout: [
-      { id: "card1", x: 20, y: 40 },
-      { id: "card2", x: 92, y: 40 },
-      { id: "card3", x: 164, y: 40 },
-      { id: "card4", x: 236, y: 40 },
-      { id: "card5", x: 308, y: 40 },
-      { id: "card6", x: 20, y: 160 },
-      { id: "card7", x: 92, y: 160 },
-      { id: "card8", x: 164, y: 160 },
-      { id: "card9", x: 236, y: 160 },
-      { id: "card10", x: 308, y: 160 },
+      { id: "card1", left: "5%", top: "5%" },
+      { id: "card2", left: "15%", top: "5%" },
+      { id: "card3", left: "25%", top: "5%" },
+      { id: "card4", left: "35%", top: "5%" },
+      { id: "card5", left: "45%", top: "5%" },
+      { id: "card6", left: "5%", top: "35%" },
+      { id: "card7", left: "15%", top: "35%" },
+      { id: "card8", left: "25%", top: "35%" },
+      { id: "card9", left: "35%", top: "35%" },
+      { id: "card10", left: "45%", top: "35%" }
     ]
   },
 
@@ -139,15 +139,17 @@ const spreads = {
       '7 - скрытый фактор',
     ],
     layout: [
-      { id: "card1", x: 20, y: 40 },
-      { id: "card2", x: 92, y: 40 },
-      { id: "card3", x: 164, y: 40 },
-      { id: "card4", x: 236, y: 40 },
-      { id: "card5", x: 308, y: 40 },
-      { id: "card6", x: 20, y: 160 },
-      { id: "card7", x: 92, y: 160 },
+      { id: "card1", left: "5%", top: "5%" },
+      { id: "card2", left: "20%", top: "5%" },
+      { id: "card3", left: "35%", top: "5%" },
+      { id: "card4", left: "50%", top: "5%" },
+      { id: "card5", left: "65%", top: "5%" },
+      { id: "card6", left: "20%", top: "35%" },
+      { id: "card7", left: "35%", top: "35%" }
     ]
   }
 };
 
-module.exports = spreads;
+// Делаем объект spreads глобально доступным
+window.spreads = spreads;
+
