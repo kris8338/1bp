@@ -25,3 +25,9 @@
     "webpack-cli": "^5.1.4"
   }
 }
+"browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
+}
